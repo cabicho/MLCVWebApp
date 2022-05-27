@@ -1,0 +1,6 @@
+
+docker build -t cabicho/imgwebapp .
+
+docker run -dp 8501:8501 cabicho/imgwebapp
+
+curl localhost:8501
