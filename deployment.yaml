@@ -30,7 +30,9 @@ metadata:
 spec:
   type: LoadBalancer #NodePort
   ports:
-  - port: 8501 # 80
+  - port: 80 #8501 # 80
+    targetPort: 8501
     nodePort: 30080
+    
   selector:
     app: webapp1
