@@ -4,3 +4,72 @@ docker build -t cabicho/imgwebapp .
 docker run -dp 8501:8501 cabicho/imgwebapp
 
 curl localhost:8501
+
+
+$ git status
+
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   k8s/deployment.yaml
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        cmd.txt
+        deployment.yaml
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git add .
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   cmd.txt
+        new file:   deployment.yaml
+        modified:   k8s/deployment.yaml
+
+$ git commit -m " change name of image and push to docker.io/cabicho/imgwebapp "
+
+[main 4432b07]  change name of image and push to docker.io/cabicho/imgwebapp
+
+$ git push
+
+$ git remote add git_remote git@github.com:cabicho/MLCVWebApp.git
+
+$ git remote
+
+git_remote
+origin
+
+$ git push git-remote master
+
+$ git branch
+* main
+
+$ git push git_remote main
+
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 855 bytes | 855.00 KiB/s, done.
+Total 6 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To github.com:cabicho/MLCVWebApp.git
+   fea8e26..4432b07  main -> main
+
+
+ minikube start --wait=false
+
+kubectl apply -f deployment.yaml
+kubectl delete -f k8s/deployment.yaml
+
+kubectl get all 
+
+kubectl delete -f deployment.yaml
